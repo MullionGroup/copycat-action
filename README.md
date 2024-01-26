@@ -149,3 +149,4 @@ The Copycat GitHub action is written by [André Storhaug](https://github.com/and
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](LICENSE) file for details.
+
