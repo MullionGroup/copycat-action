@@ -25,6 +25,7 @@ DST_WIKI="$INPUT_DST_WIKI"
 COMMIT_MESSAGE="$INPUT_COMMIT_MESSAGE"
 USERNAME="$INPUT_USERNAME"
 EMAIL="$INPUT_EMAIL"
+RM_TOP_DIR="$INPUT_RM_TOP_DIR"
 
 if [[ -z "$SRC_PATH" ]]; then
     echo "SRC_PATH environment variable is missing. Cannot proceed."
@@ -141,8 +142,32 @@ if [ "$CLEAN" = "true" ]; then
 fi
 
 mkdir -p "${DST_REPO_DIR}/${DST_PATH%/*}" || exit "$?"
+
+
+
+
 cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/${DST_PATH}" || exit "$?"
+
+
+
 cd "${DST_REPO_DIR}" || exit "$?"
+
+# if rm_top_dir is true, remove the top directory(s) from the destination path by copying the contents of 
+if [ "$RM_TOP_DIR" = "true" ]; then
+    # cd to the DST_PATH directory
+    cd "${DST_PATH%/*}" || exit "$?"
+
+    if [ -d "${SRC_PATH}" ] ; then
+        # recursively copy the contents of the source path to the current directory and rm the source directory. Exit with code 1 if the copy fails
+        cp -rf "${SRC_PATH}"/* . && rm -rf "${SRC_PATH}" || exit "$?"
+        
+    else
+        # exit with error and error message
+        echo >&2 "Source directory does not exist"
+        exit 1
+    fi
+fi
+
 
 if [[ -z "${COMMIT_MESSAGE}" ]]; then
     if [ -f "${BASE_PATH}/${FINAL_SOURCE}" ]; then
