@@ -159,7 +159,7 @@ if [ "$RM_TOP_DIR" = "true" ]; then
     echo final_source: "${FINAL_SOURCE}"
     echo "${DST_REPO_DIR}/${DST_PATH}"
     
-#    cd "${DST_PATH}" || exit "$?"
+    cd "${DST_PATH}" || exit "$?"
     pwd
   
     if [ -d "${SRC_PATH}" ] ; then
