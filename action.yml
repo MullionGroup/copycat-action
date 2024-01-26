@@ -58,6 +58,10 @@ inputs:
   email:
     description: 'The email used for associating commits made by this GitHub action'
     required: false
+  rm_top_dir:
+    description: 'Set to true if the top directory should be removed from the destination path'
+    required: false
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -78,3 +82,4 @@ runs:
     - ${{ inputs.commit_message }}
     - ${{ inputs.username }}
     - ${{ inputs.email }}
+    - ${{ inputs.rm_top_dir }}
