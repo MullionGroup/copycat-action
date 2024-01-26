@@ -26,6 +26,7 @@ COMMIT_MESSAGE="$INPUT_COMMIT_MESSAGE"
 USERNAME="$INPUT_USERNAME"
 EMAIL="$INPUT_EMAIL"
 RM_TOP_DIR="$INPUT_RM_TOP_DIR"
+FORCE_PUSH="$INPUT_FORCE_PUSH"
 
 if [[ -z "$SRC_PATH" ]]; then
     echo "SRC_PATH environment variable is missing. Cannot proceed."
@@ -191,7 +192,13 @@ else
     # Uncommitted changes
     git add -A
     git commit --message "${COMMIT_MESSAGE}"
-    git push origin ${DST_BRANCH}
+    
+    # if force push is true, force push to the destination branch
+    if [ "$FORCE_PUSH" = "true" ]; then
+        git push --force origin ${DST_BRANCH}
+    else
+        git push origin ${DST_BRANCH}
+    fi
 fi
 
 echo "Copying complete 👌"
