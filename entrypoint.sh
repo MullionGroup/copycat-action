@@ -155,7 +155,8 @@ pwd
 # if rm_top_dir is true, remove the top directory(s) from the destination path by copying the contents of 
 if [ "$RM_TOP_DIR" = "true" ]; then
     # cd to the DST_PATH directory
-    cd "${DST_PATH%/*}" || exit "$?"
+    echo dst_path: "${DST_PATH}"
+    cd "${DST_PATH}" || exit "$?"
     pwd
   
     if [ -d "${SRC_PATH}" ] ; then
