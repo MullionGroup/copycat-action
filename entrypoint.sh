@@ -144,11 +144,11 @@ fi
 mkdir -p "${DST_REPO_DIR}/${DST_PATH%/*}" || exit "$?"
 
 
-
+pwd
 
 cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/${DST_PATH}" || exit "$?"
 
-
+pwd
 
 cd "${DST_REPO_DIR}" || exit "$?"
 pwd
