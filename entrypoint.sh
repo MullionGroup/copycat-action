@@ -151,12 +151,13 @@ cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/${DST_PATH}" || exit "$?"
 
 
 cd "${DST_REPO_DIR}" || exit "$?"
-
+pwd
 # if rm_top_dir is true, remove the top directory(s) from the destination path by copying the contents of 
 if [ "$RM_TOP_DIR" = "true" ]; then
     # cd to the DST_PATH directory
     cd "${DST_PATH%/*}" || exit "$?"
-
+    pwd
+  
     if [ -d "${SRC_PATH}" ] ; then
         # recursively copy the contents of the source path to the current directory and rm the source directory. Exit with code 1 if the copy fails
         cp -rf "${SRC_PATH}"/* . && rm -rf "${SRC_PATH}" || exit "$?"
