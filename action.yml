@@ -59,7 +59,7 @@ inputs:
     description: 'The email used for associating commits made by this GitHub action'
     required: false
   rm_top_dir:
-    description: 'Set to true if the top directory should be removed from the destination path'
+    description: 'Set to true if the top directory should be removed from the destination path after file(s) or folder(s) have been copied to the destination repository'
     required: false
     default: false
 runs:

@@ -1,3 +1,4 @@
+This is a fork of andstor/copycat-action. It extends the action to remove the src_path from the dst_path. This is useful when copying files from a subfolder to the root of the destination repo.
 <p align=center>
 	<img width="240" src="media/logo.svg" alt="Copycat Logo">
 </p>
@@ -15,7 +16,7 @@ The following example [workflow step](https://help.github.com/en/actions/configu
 
 ```yml
 - name: Copy
-  uses: andstor/copycat-action@v3
+  uses: mulliongroup/copycat-action@v1.0.0
   with:
     personal_token: ${{ secrets.PERSONAL_TOKEN }}
     src_path: /.
@@ -80,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Copycat
-      uses: andstor/copycat-action@v3
+      uses: mulliongroup/copycat-action@v3
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         src_path: /.
@@ -104,17 +105,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Copycat
-      uses: andstor/copycat-action@v3
+      uses: mulliongroup/copycat-action@v1.0.0
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /dbclient/
-        dst_path: /dbclient_sm/
+        src_path: /service/
+        dst_path: /monoservice/
         dst_owner: MullionGroup
-        dst_repo_name: flintpro-be
+        dst_repo_name: test-repo
         dst_branch: develop
         src_branch: sync-develop
-        username: DevOpsBot
-        email: dev_ops_bot@flintpro.com
+        username: TestUser
+        email: TestUser@example.com
 ```
 will copy all files from the dbclient folder to the dbclient_sm folder in the flintpro-be repo with the pattern /dbclient_sm/dbclient/*
 
@@ -127,18 +128,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Copycat
-      uses: andstor/copycat-action@v3
+      uses: mulliongroup/copycat-action@v1.0.0
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        src_path: /dbclient/
-        dst_path: /dbclient_sm/
+        src_path: /service/
+        dst_path: /monoservice/
         dst_owner: MullionGroup
-        dst_repo_name: flintpro-be
+        dst_repo_name: test-repo
         dst_branch: develop
         src_branch: sync-develop
-        username: DevOpsBot
-        email: dev_ops_bot@flintpro.com
-        rm_top_dir: true
+        username: TestUser
+        email: TestUser@example.com
 ```
 will copy all files from the dbclient folder to the dbclient_sm folder in the flintpro-be repo with the pattern /dbclient_sm/* 
 

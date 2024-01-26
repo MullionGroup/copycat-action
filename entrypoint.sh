@@ -152,8 +152,7 @@ cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/${DST_PATH}" || exit "$?"
 
 cd "${DST_REPO_DIR}" || exit "$?"
 
-# if remove src_dir_from_dst_path is true, remove the source directory from the destination path
-# if rm_top_dir is true, remove the top directory from the destination path by copying the contents of 
+# if rm_top_dir is true, remove the top directory(s) from the destination path by copying the contents of 
 if [ "$RM_TOP_DIR" = "true" ]; then
     # cd to the DST_PATH directory
     cd "${DST_PATH%/*}" || exit "$?"
