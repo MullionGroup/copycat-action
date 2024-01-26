@@ -148,14 +148,18 @@ pwd
 
 cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/${DST_PATH}" || exit "$?"
 
-pwd
 
+cd "${DST_REPO_DIR}" || exit "$?"
 
 # if rm_top_dir is true, remove the top directory(s) from the destination path by copying the contents of 
 if [ "$RM_TOP_DIR" = "true" ]; then
     # cd to the DST_PATH directory
     echo dst_path: "${DST_PATH}"
-    cd "${DST_PATH}" || exit "$?"
+    echo src_path: "${SRC_PATH}"
+    echo final_source: "${FINAL_SOURCE}"
+    echo "${DST_REPO_DIR}/${DST_PATH}"
+    
+#    cd "${DST_PATH}" || exit "$?"
     pwd
   
     if [ -d "${SRC_PATH}" ] ; then
@@ -169,7 +173,6 @@ if [ "$RM_TOP_DIR" = "true" ]; then
     fi
 fi
 pwd
-cd "${DST_REPO_DIR}" || exit "$?"
 
 
 
