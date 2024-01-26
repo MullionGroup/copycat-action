@@ -150,8 +150,7 @@ cp -rf "${FINAL_SOURCE}" "${DST_REPO_DIR}/${DST_PATH}" || exit "$?"
 
 pwd
 
-cd "${DST_REPO_DIR}" || exit "$?"
-pwd
+
 # if rm_top_dir is true, remove the top directory(s) from the destination path by copying the contents of 
 if [ "$RM_TOP_DIR" = "true" ]; then
     # cd to the DST_PATH directory
@@ -169,6 +168,9 @@ if [ "$RM_TOP_DIR" = "true" ]; then
         exit 1
     fi
 fi
+pwd
+cd "${DST_REPO_DIR}" || exit "$?"
+
 
 
 if [[ -z "${COMMIT_MESSAGE}" ]]; then
